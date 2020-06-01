@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Html\Test;
+namespace DefStudio\Html\Test;
 
-use Spatie\Html\Test\Concerns\AssertsHtmlStrings;
+use DefStudio\Html\Test\Concerns\AssertsHtmlStrings;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Html\Test;
+namespace DefStudio\Html\Test;
 
-use Spatie\Html\Attributes;
+use DefStudio\Html\Attributes;
 
 class AttributesTest extends TestCase
 {

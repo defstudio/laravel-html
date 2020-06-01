@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Test\Elements;
+namespace DefStudio\Html\Test\Elements;
 
-use Spatie\Html\Elements\Fieldset;
-use Spatie\Html\Test\TestCase;
+use DefStudio\Html\Elements\Fieldset;
+use DefStudio\Html\Test\TestCase;
 
 class FieldsetTest extends TestCase
 {

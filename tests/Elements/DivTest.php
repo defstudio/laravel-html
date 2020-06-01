@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Test\Elements;
+namespace DefStudio\Html\Test\Elements;
 
-use Spatie\Html\Elements\Div;
-use Spatie\Html\Test\TestCase;
+use DefStudio\Html\Elements\Div;
+use DefStudio\Html\Test\TestCase;
 
 class DivTest extends TestCase
 {

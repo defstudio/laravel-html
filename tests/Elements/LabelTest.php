@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Test\Elements;
+namespace DefStudio\Html\Test\Elements;
 
-use Spatie\Html\Elements\Label;
-use Spatie\Html\Test\TestCase;
+use DefStudio\Html\Elements\Label;
+use DefStudio\Html\Test\TestCase;
 
 class LabelTest extends TestCase
 {

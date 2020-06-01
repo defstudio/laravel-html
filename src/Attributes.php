@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Html;
+namespace DefStudio\Html;
 
-use Spatie\Html\Helpers\Arr;
+use DefStudio\Html\Helpers\Arr;
 
 class Attributes
 {

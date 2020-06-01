@@ -1,17 +1,17 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
-use Spatie\Html\BaseElement;
-use Spatie\Html\Elements\Attributes\Autofocus;
-use Spatie\Html\Elements\Attributes\Disabled;
-use Spatie\Html\Elements\Attributes\MinMaxLength;
-use Spatie\Html\Elements\Attributes\Name;
-use Spatie\Html\Elements\Attributes\Placeholder;
-use Spatie\Html\Elements\Attributes\Readonly;
-use Spatie\Html\Elements\Attributes\Required;
-use Spatie\Html\Elements\Attributes\Type;
-use Spatie\Html\Elements\Attributes\Value;
+use DefStudio\Html\BaseElement;
+use DefStudio\Html\Elements\Attributes\Autofocus;
+use DefStudio\Html\Elements\Attributes\Disabled;
+use DefStudio\Html\Elements\Attributes\MinMaxLength;
+use DefStudio\Html\Elements\Attributes\Name;
+use DefStudio\Html\Elements\Attributes\Placeholder;
+use DefStudio\Html\Elements\Attributes\Readonly;
+use DefStudio\Html\Elements\Attributes\Required;
+use DefStudio\Html\Elements\Attributes\Type;
+use DefStudio\Html\Elements\Attributes\Value;
 
 class Input extends BaseElement
 {

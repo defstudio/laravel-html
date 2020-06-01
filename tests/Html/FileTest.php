@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html\Test\Html;
+namespace DefStudio\Html\Test\Html;
 
 class FileTest extends TestCase
 {

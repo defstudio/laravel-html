@@ -1,16 +1,16 @@
 <?php
 
-namespace Spatie\Html\Facades;
+namespace DefStudio\Html\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Spatie\Html\Html as HtmlBuilder;
+use DefStudio\Html\Html as HtmlBuilder;
 
 class Html extends Facade
 {
     /**
      * Get the registered name of the component.
      *
-     * @see \Spatie\Html\Html
+     * @see \DefStudio\Html\Html
      *
      * @return string
      */

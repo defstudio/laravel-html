@@ -1,16 +1,16 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Spatie\Html\BaseElement;
-use Spatie\Html\Elements\Attributes\Autofocus;
-use Spatie\Html\Elements\Attributes\Disabled;
-use Spatie\Html\Elements\Attributes\Name;
-use Spatie\Html\Elements\Attributes\Readonly;
-use Spatie\Html\Elements\Attributes\Required;
-use Spatie\Html\Selectable;
+use DefStudio\Html\BaseElement;
+use DefStudio\Html\Elements\Attributes\Autofocus;
+use DefStudio\Html\Elements\Attributes\Disabled;
+use DefStudio\Html\Elements\Attributes\Name;
+use DefStudio\Html\Elements\Attributes\Readonly;
+use DefStudio\Html\Elements\Attributes\Required;
+use DefStudio\Html\Selectable;
 
 class Select extends BaseElement
 {

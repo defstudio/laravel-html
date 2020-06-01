@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html\Elements\Attributes;
+namespace DefStudio\Html\Elements\Attributes;
 
 trait Autofocus
 {

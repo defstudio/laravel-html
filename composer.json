@@ -1,23 +1,17 @@
 {
-    "name": "spatie/laravel-html",
-    "description": "A fluent html builder",
+    "name": "defstudio/laravel-html",
+    "description": "A fluent html builder - spatie/laravel-html fork",
     "keywords": [
         "spatie",
         "html"
     ],
-    "homepage": "https://github.com/spatie/laravel-html",
+    "homepage": "https://defstudio.it/packages/laravel-html",
     "license": "MIT",
     "authors": [
         {
-            "name": "Sebastian De Deyne",
-            "email": "sebastian@spatie.be",
-            "homepage": "https://spatie.be",
-            "role": "Developer"
-        },
-        {
-            "name": "Freek Van der Herten",
-            "email": "freek@spatie.be",
-            "homepage": "https://spatie.be",
+            "name": "Fabio Ivona",
+            "email": "fabio.ivona@defstudio.it",
+            "homepage": "https://defstudio.it",
             "role": "Developer"
         }
     ],
@@ -33,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Html\\": "src"
+            "DefStudio\\Html\\": "src"
         },
         "files": [
             "src/helpers.php"
@@ -41,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Html\\Test\\": "tests"
+            "DefStudio\\Html\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -53,10 +47,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Html\\HtmlServiceProvider"
+                "DefStudio\\Html\\HtmlServiceProvider"
             ],
             "aliases": {
-                "Html": "Spatie\\Html\\Facades\\Html"
+                "Html": "DefStudio\\Html\\Facades\\Html"
             }
         }
     },

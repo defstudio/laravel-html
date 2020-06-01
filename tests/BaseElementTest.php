@@ -1,14 +1,14 @@
 <?php
 
-namespace Spatie\Html\Test;
+namespace DefStudio\Html\Test;
 
 use BadMethodCallException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
-use Spatie\Html\BaseElement;
-use Spatie\Html\Exceptions\InvalidChild;
-use Spatie\Html\Exceptions\InvalidHtml;
-use Spatie\Html\Exceptions\MissingTag;
+use DefStudio\Html\BaseElement;
+use DefStudio\Html\Exceptions\InvalidChild;
+use DefStudio\Html\Exceptions\InvalidHtml;
+use DefStudio\Html\Exceptions\MissingTag;
 
 class BaseElementTest extends TestCase
 {

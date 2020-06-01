@@ -23,7 +23,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
 
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+Our address is: DefStudio, Samberstraat 69D, 2060 Antwerp, Belgium.
 
 All postcards are published [on our website](https://spatie.be/en/opensource/postcards).
 
@@ -41,7 +41,7 @@ Next, you must install the service provider:
 // config/app.php
 'providers' => [
     ...
-    Spatie\Html\HtmlServiceProvider::class,
+    DefStudio\Html\HtmlServiceProvider::class,
 ];
 ```
 
@@ -51,7 +51,7 @@ And optionally register an alias for the facade.
 // config/app.php
 'aliases' => [
     ...
-    'Html' => Spatie\Html\Facades\Html::class,
+    'Html' => DefStudio\Html\Facades\Html::class,
 ];
 ```
 
@@ -59,7 +59,7 @@ And optionally register an alias for the facade.
 
 ### Concepts
 
-Elements—classes under the `Spatie\Html\Elements` namespace—are generally created via a `Spatie\Html\Html` builder instance.
+Elements—classes under the `DefStudio\Html\Elements` namespace—are generally created via a `DefStudio\Html\Html` builder instance.
 
 ```php
 html()->span()->text('Hello world!');
@@ -121,8 +121,8 @@ If you discover any security related issues, please email freek@spatie.be instea
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
-## About Spatie
-Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+## About DefStudio
+DefStudio is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
 ## License
 

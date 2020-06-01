@@ -1,10 +1,10 @@
 <?php
 
-use Spatie\Html\Html;
+use DefStudio\Html\Html;
 
 if (! function_exists('html')) {
     /**
-     * @return \Spatie\Html\Html
+     * @return \DefStudio\Html\Html
      */
     function html()
     {

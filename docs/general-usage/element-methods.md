@@ -3,7 +3,7 @@ title: Element methods
 weight: 4
 ---
 
-All `Spatie\Html\Elements` have some methods that make working with elements easy. All these methods can be chained together fluently and every method will return a new `Element` instance. This way you can preserve the original `Element` if necessary.
+All `DefStudio\Html\Elements` have some methods that make working with elements easy. All these methods can be chained together fluently and every method will return a new `Element` instance. This way you can preserve the original `Element` if necessary.
 
 ## Available methods
 

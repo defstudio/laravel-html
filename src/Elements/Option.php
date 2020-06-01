@@ -1,10 +1,10 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
-use Spatie\Html\BaseElement;
-use Spatie\Html\Elements\Attributes\Value;
-use Spatie\Html\Selectable;
+use DefStudio\Html\BaseElement;
+use DefStudio\Html\Elements\Attributes\Value;
+use DefStudio\Html\Selectable;
 
 class Option extends BaseElement implements Selectable
 {

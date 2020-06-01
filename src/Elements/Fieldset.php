@@ -1,15 +1,15 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
-use Spatie\Html\BaseElement;
+use DefStudio\Html\BaseElement;
 
 class Fieldset extends BaseElement
 {
     protected $tag = 'fieldset';
 
     /**
-     * @param \Spatie\Html\HtmlElement|string $text
+     * @param \DefStudio\Html\HtmlElement|string $text
      *
      * @return static
      */

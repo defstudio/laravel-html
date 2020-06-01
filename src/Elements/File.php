@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
-use Spatie\Html\BaseElement;
-use Spatie\Html\Elements\Attributes\Autofocus;
-use Spatie\Html\Elements\Attributes\Name;
-use Spatie\Html\Elements\Attributes\Required;
+use DefStudio\Html\BaseElement;
+use DefStudio\Html\Elements\Attributes\Autofocus;
+use DefStudio\Html\Elements\Attributes\Name;
+use DefStudio\Html\Elements\Attributes\Required;
 
 class File extends BaseElement
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html;
+namespace DefStudio\Html;
 
 use DateTimeImmutable;
 use Illuminate\Contracts\Support\Htmlable;
@@ -9,22 +9,22 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Spatie\Html\Elements\A;
-use Spatie\Html\Elements\Button;
-use Spatie\Html\Elements\Div;
-use Spatie\Html\Elements\Element;
-use Spatie\Html\Elements\Fieldset;
-use Spatie\Html\Elements\File;
-use Spatie\Html\Elements\Form;
-use Spatie\Html\Elements\I;
-use Spatie\Html\Elements\Img;
-use Spatie\Html\Elements\Input;
-use Spatie\Html\Elements\Label;
-use Spatie\Html\Elements\Legend;
-use Spatie\Html\Elements\Option;
-use Spatie\Html\Elements\Select;
-use Spatie\Html\Elements\Span;
-use Spatie\Html\Elements\Textarea;
+use DefStudio\Html\Elements\A;
+use DefStudio\Html\Elements\Button;
+use DefStudio\Html\Elements\Div;
+use DefStudio\Html\Elements\Element;
+use DefStudio\Html\Elements\Fieldset;
+use DefStudio\Html\Elements\File;
+use DefStudio\Html\Elements\Form;
+use DefStudio\Html\Elements\I;
+use DefStudio\Html\Elements\Img;
+use DefStudio\Html\Elements\Input;
+use DefStudio\Html\Elements\Label;
+use DefStudio\Html\Elements\Legend;
+use DefStudio\Html\Elements\Option;
+use DefStudio\Html\Elements\Select;
+use DefStudio\Html\Elements\Span;
+use DefStudio\Html\Elements\Textarea;
 
 class Html
 {
@@ -48,7 +48,7 @@ class Html
      * @param string|null $href
      * @param string|null $text
      *
-     * @return \Spatie\Html\Elements\A
+     * @return \DefStudio\Html\Elements\A
      */
     public function a($href = null, $contents = null)
     {
@@ -61,7 +61,7 @@ class Html
      * @param string|null $href
      * @param string|null $text
      *
-     * @return \Spatie\Html\Elements\I
+     * @return \DefStudio\Html\Elements\I
      */
     public function i($contents = null)
     {
@@ -73,7 +73,7 @@ class Html
      * @param string|null $type
      * @param string|null $text
      *
-     * @return \Spatie\Html\Elements\Button
+     * @return \DefStudio\Html\Elements\Button
      */
     public function button($contents = null, $type = null, $name = null)
     {
@@ -107,7 +107,7 @@ class Html
      * @param bool $checked
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function checkbox($name = null, $checked = null, $value = '1')
     {
@@ -117,9 +117,9 @@ class Html
     }
 
     /**
-     * @param \Spatie\Html\HtmlElement|string|null $contents
+     * @param \DefStudio\Html\HtmlElement|string|null $contents
      *
-     * @return \Spatie\Html\Elements\Div
+     * @return \DefStudio\Html\Elements\Div
      */
     public function div($contents = null)
     {
@@ -130,7 +130,7 @@ class Html
      * @param string|null $name
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function email($name = null, $value = null)
     {
@@ -142,7 +142,7 @@ class Html
      * @param string|null $value
      * @param bool $format
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function date($name = '', $value = null, $format = true)
     {
@@ -160,7 +160,7 @@ class Html
      * @param string|null $value
      * @param bool $format
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function datetime($name = '', $value = null, $format = true)
     {
@@ -181,7 +181,7 @@ class Html
      * @param string|null $max
      * @param string|null $step
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function range($name = '', $value = '', $min = null, $max = null, $step = null)
     {
@@ -196,7 +196,7 @@ class Html
      * @param string|null $value
      * @param bool $format
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function time($name = '', $value = null, $format = true)
     {
@@ -212,7 +212,7 @@ class Html
     /**
      * @param string $tag
      *
-     * @return \Spatie\Html\Elements\Element
+     * @return \DefStudio\Html\Elements\Element
      */
     public function element($tag)
     {
@@ -224,7 +224,7 @@ class Html
      * @param string|null $name
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function input($type = null, $name = null, $value = null)
     {
@@ -238,9 +238,9 @@ class Html
     }
 
     /**
-     * @param \Spatie\Html\HtmlElement|string|null $legend
+     * @param \DefStudio\Html\HtmlElement|string|null $legend
      *
-     * @return \Spatie\Html\Elements\Fieldset
+     * @return \DefStudio\Html\Elements\Fieldset
      */
     public function fieldset($legend = null)
     {
@@ -252,7 +252,7 @@ class Html
      * @param string $method
      * @param string|null $action
      *
-     * @return \Spatie\Html\Elements\Form
+     * @return \DefStudio\Html\Elements\Form
      */
     public function form($method = 'POST', $action = null)
     {
@@ -279,7 +279,7 @@ class Html
      * @param string|null $name
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function hidden($name = null, $value = null)
     {
@@ -290,7 +290,7 @@ class Html
      * @param string|null $src
      * @param string|null $alt
      *
-     * @return \Spatie\Html\Elements\Img
+     * @return \DefStudio\Html\Elements\Img
      */
     public function img($src = null, $alt = null)
     {
@@ -300,10 +300,10 @@ class Html
     }
 
     /**
-     * @param \Spatie\Html\HtmlElement|iterable|string|null $contents
+     * @param \DefStudio\Html\HtmlElement|iterable|string|null $contents
      * @param string|null $for
      *
-     * @return \Spatie\Html\Elements\Label
+     * @return \DefStudio\Html\Elements\Label
      */
     public function label($contents = null, $for = null)
     {
@@ -313,9 +313,9 @@ class Html
     }
 
     /**
-     * @param \Spatie\Html\HtmlElement|string|null $contents
+     * @param \DefStudio\Html\HtmlElement|string|null $contents
      *
-     * @return \Spatie\Html\Elements\Legend
+     * @return \DefStudio\Html\Elements\Legend
      */
     public function legend($contents = null)
     {
@@ -326,7 +326,7 @@ class Html
      * @param string $email
      * @param string|null $text
      *
-     * @return \Spatie\Html\Elements\A
+     * @return \DefStudio\Html\Elements\A
      */
     public function mailto($email, $text = null)
     {
@@ -338,7 +338,7 @@ class Html
      * @param iterable $options
      * @param string|iterable|null $value
      *
-     * @return \Spatie\Html\Elements\Select
+     * @return \DefStudio\Html\Elements\Select
      */
     public function multiselect($name = null, $options = [], $value = null)
     {
@@ -357,7 +357,7 @@ class Html
      * @param string|null $max
      * @param string|null $step
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function number($name = null, $value = null, $min = null, $max = null, $step = null)
     {
@@ -372,7 +372,7 @@ class Html
      * @param string|null $value
      * @param bool $selected
      *
-     * @return \Spatie\Html\Elements\Option
+     * @return \DefStudio\Html\Elements\Option
      */
     public function option($text = null, $value = null, $selected = false)
     {
@@ -385,7 +385,7 @@ class Html
     /**
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function password($name = null)
     {
@@ -397,7 +397,7 @@ class Html
      * @param bool $checked
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function radio($name = null, $checked = null, $value = null)
     {
@@ -412,7 +412,7 @@ class Html
      * @param iterable $options
      * @param string|iterable|null $value
      *
-     * @return \Spatie\Html\Elements\Select
+     * @return \DefStudio\Html\Elements\Select
      */
     public function select($name = null, $options = [], $value = null)
     {
@@ -424,9 +424,9 @@ class Html
     }
 
     /**
-     * @param \Spatie\Html\HtmlElement|string|null $contents
+     * @param \DefStudio\Html\HtmlElement|string|null $contents
      *
-     * @return \Spatie\Html\Elements\Span
+     * @return \DefStudio\Html\Elements\Span
      */
     public function span($contents = null)
     {
@@ -436,7 +436,7 @@ class Html
     /**
      * @param string|null $text
      *
-     * @return \Spatie\Html\Elements\Button
+     * @return \DefStudio\Html\Elements\Button
      */
     public function submit($text = null)
     {
@@ -446,7 +446,7 @@ class Html
     /**
      * @param string|null $text
      *
-     * @return \Spatie\Html\Elements\Button
+     * @return \DefStudio\Html\Elements\Button
      */
     public function reset($text = null)
     {
@@ -457,7 +457,7 @@ class Html
      * @param string $number
      * @param string|null $text
      *
-     * @return \Spatie\Html\Elements\A
+     * @return \DefStudio\Html\Elements\A
      */
     public function tel($number, $text = null)
     {
@@ -468,7 +468,7 @@ class Html
      * @param string|null $name
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function text($name = null, $value = null)
     {
@@ -478,7 +478,7 @@ class Html
     /**
      * @param string|null $name
      *
-     * @return \Spatie\Html\Elements\File
+     * @return \DefStudio\Html\Elements\File
      */
     public function file($name = null)
     {
@@ -491,7 +491,7 @@ class Html
      * @param string|null $name
      * @param string|null $value
      *
-     * @return \Spatie\Html\Elements\Textarea
+     * @return \DefStudio\Html\Elements\Textarea
      */
     public function textarea($name = null, $value = null)
     {
@@ -502,7 +502,7 @@ class Html
     }
 
     /**
-     * @return \Spatie\Html\Elements\Input
+     * @return \DefStudio\Html\Elements\Input
      */
     public function token()
     {
@@ -529,7 +529,7 @@ class Html
      * @param string|null $method
      * @param string|null $action
      *
-     * @return \Spatie\Html\Elements\Form
+     * @return \DefStudio\Html\Elements\Form
      */
     public function modelForm($model, $method = 'POST', $action = null): Form
     {

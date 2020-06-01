@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Exceptions;
+namespace DefStudio\Html\Exceptions;
 
 use Exception;
-use Spatie\Html\HtmlElement;
+use DefStudio\Html\HtmlElement;
 
 class InvalidChild extends Exception
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
-use Spatie\Html\BaseElement;
-use Spatie\Html\Elements\Attributes\Name;
-use Spatie\Html\Elements\Attributes\Type;
-use Spatie\Html\Elements\Attributes\Value;
+use DefStudio\Html\BaseElement;
+use DefStudio\Html\Elements\Attributes\Name;
+use DefStudio\Html\Elements\Attributes\Type;
+use DefStudio\Html\Elements\Attributes\Value;
 
 class Button extends BaseElement
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Test\Elements;
+namespace DefStudio\Html\Test\Elements;
 
-use Spatie\Html\Elements\Button;
-use Spatie\Html\Test\TestCase;
+use DefStudio\Html\Elements\Button;
+use DefStudio\Html\Test\TestCase;
 
 class ButtonTest extends TestCase
 {

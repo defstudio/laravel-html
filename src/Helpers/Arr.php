@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html\Helpers;
+namespace DefStudio\Html\Helpers;
 
 use Illuminate\Support\Collection;
 

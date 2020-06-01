@@ -17,6 +17,6 @@ Next, you need to register the service provider:
 // config/app.php
 'providers' => [
     ...
-    Spatie\Html\HtmlServiceProvider::class,
+    DefStudio\Html\HtmlServiceProvider::class,
 ];
 ```

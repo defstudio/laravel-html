@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html;
+namespace DefStudio\Html;
 
 use BadMethodCallException;
 use Illuminate\Contracts\Support\Htmlable;
@@ -8,9 +8,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Spatie\Html\Exceptions\InvalidChild;
-use Spatie\Html\Exceptions\InvalidHtml;
-use Spatie\Html\Exceptions\MissingTag;
+use DefStudio\Html\Exceptions\InvalidChild;
+use DefStudio\Html\Exceptions\InvalidHtml;
+use DefStudio\Html\Exceptions\MissingTag;
 
 abstract class BaseElement implements Htmlable, HtmlElement
 {
@@ -21,7 +21,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /** @var string */
     protected $tag;
 
-    /** @var \Spatie\Html\Attributes */
+    /** @var \DefStudio\Html\Attributes */
     protected $attributes;
 
     /** @var \Illuminate\Support\Collection */
@@ -170,7 +170,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     }
 
     /**
-     * @param \Spatie\Html\HtmlElement|string|iterable|null $children
+     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -193,7 +193,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `addChildren`.
      *
-     * @param \Spatie\Html\HtmlElement|string|iterable|null $children
+     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -206,7 +206,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `addChildren`.
      *
-     * @param \Spatie\Html\HtmlElement|string|iterable|null $children
+     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -219,7 +219,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `addChildren`.
      *
-     * @param \Spatie\Html\HtmlElement|string|iterable|null $children
+     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -232,7 +232,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Replace all children with an array of elements.
      *
-     * @param \Spatie\Html\HtmlElement[] $children
+     * @param \DefStudio\Html\HtmlElement[] $children
      * @param callable|null $mapper
      *
      * @return static
@@ -247,7 +247,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     }
 
     /**
-     * @param \Spatie\Html\HtmlElement|string|iterable|null $children
+     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -266,7 +266,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `prependChildren`.
      *
-     * @param \Spatie\Html\HtmlElement|string|iterable|null $children
+     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static

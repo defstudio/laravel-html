@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html\Exceptions;
+namespace DefStudio\Html\Exceptions;
 
 use Exception;
 

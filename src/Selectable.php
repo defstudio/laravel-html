@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html;
+namespace DefStudio\Html;
 
 interface Selectable
 {

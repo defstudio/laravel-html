@@ -5,7 +5,7 @@ weight: 2
 
 ## Building general elements
 
-The following builder methods can be used to generate general HTML elements like links, `div`s, `span`s, etc... All these methods return instances of `Spatie\Html\Elements`. Of course all [element methods](/laravel-html/v1/general-usage/element-methods) are available on the returned instances.
+The following builder methods can be used to generate general HTML elements like links, `div`s, `span`s, etc... All these methods return instances of `DefStudio\Html\Elements`. Of course all [element methods](/laravel-html/v1/general-usage/element-methods) are available on the returned instances.
 
 - `function a($href = null, $text = null): A`
 - `function button($text = null, $type = 'button'): Button`
@@ -42,7 +42,7 @@ The HTML builder has some great methods for building entire forms. By default al
 function form($method = 'POST', $action = null)
 ```
 
-The `form()` method will return a `Spatie\Html\Elements\Form` class. It will have the `_token` and `_method` fields as children by default.
+The `form()` method will return a `DefStudio\Html\Elements\Form` class. It will have the `_token` and `_method` fields as children by default.
 
 Generally speaking you'll want to use this in combination with `open()` and `close()` to generate the opening and closing tags for the form in your template.
 

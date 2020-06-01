@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html\Test\Html;
+namespace DefStudio\Html\Test\Html;
 
 class ATest extends TestCase
 {
@@ -26,8 +26,8 @@ class ATest extends TestCase
     public function it_can_create_an_a_element_with_a_href_and_text_contents()
     {
         $this->assertHtmlStringEqualsHtmlString(
-            '<a href="https://spatie.be">Spatie</a>',
-            $this->html->a('https://spatie.be', 'Spatie')
+            '<a href="https://spatie.be">DefStudio</a>',
+            $this->html->a('https://spatie.be', 'DefStudio')
         );
     }
 
@@ -35,8 +35,8 @@ class ATest extends TestCase
     public function it_can_create_an_a_element_with_a_href_and_html_contents()
     {
         $this->assertHtmlStringEqualsHtmlString(
-            '<a href="https://spatie.be/open-source">Spatie <em>Open Source</em></a>',
-            $this->html->a('https://spatie.be/open-source', 'Spatie <em>Open Source</em>')
+            '<a href="https://spatie.be/open-source">DefStudio <em>Open Source</em></a>',
+            $this->html->a('https://spatie.be/open-source', 'DefStudio <em>Open Source</em>')
         );
     }
 }

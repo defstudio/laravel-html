@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Test\Elements;
+namespace DefStudio\Html\Test\Elements;
 
-use Spatie\Html\Elements\Textarea;
-use Spatie\Html\Test\TestCase;
+use DefStudio\Html\Elements\Textarea;
+use DefStudio\Html\Test\TestCase;
 
 class TextareaTest extends TestCase
 {

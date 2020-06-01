@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
-use Spatie\Html\BaseElement;
+use DefStudio\Html\BaseElement;
 
 class Form extends BaseElement
 {

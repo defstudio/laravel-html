@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Html\Elements;
+namespace DefStudio\Html\Elements;
 
 use Illuminate\Support\Collection;
 use ReflectionClass;
-use Spatie\Html\Attributes;
-use Spatie\Html\BaseElement;
+use DefStudio\Html\Attributes;
+use DefStudio\Html\BaseElement;
 
 class Element extends BaseElement
 {

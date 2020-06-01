@@ -1,14 +1,14 @@
 <?php
 
-namespace Spatie\Html\Test\Html;
+namespace DefStudio\Html\Test\Html;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Mockery;
-use Spatie\Html\Html;
-use Spatie\Html\Test\Concerns\AssertsHtmlStrings;
+use DefStudio\Html\Html;
+use DefStudio\Html\Test\Concerns\AssertsHtmlStrings;
 
-abstract class TestCase extends \Spatie\Html\Test\TestCase
+abstract class TestCase extends \DefStudio\Html\Test\TestCase
 {
     use AssertsHtmlStrings;
 
@@ -18,7 +18,7 @@ abstract class TestCase extends \Spatie\Html\Test\TestCase
     /** @var array */
     protected $session = [];
 
-    /** @var \Spatie\Html\Html $html */
+    /** @var \DefStudio\Html\Html $html */
     protected $html;
 
     public function setUp(): void

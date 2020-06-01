@@ -3,13 +3,13 @@ title: Element classes
 weight: 3
 ---
 
-This package includes some element classes out of the box, others can be created using the [generic `Spatie\Html\Elements\Element` class](#generic-codeelementcode). 
+This package includes some element classes out of the box, others can be created using the [generic `DefStudio\Html\Elements\Element` class](#generic-codeelementcode). 
 
 All elements can use the [base element methods](/laravel-html/v1/general-usage/element-methods). Some elements also have some element specific methods to easily set common attributes. These element specific methods can be found bellow.
 
 ## Generic `Element`
 
-Any HTML element can be created from the generic `Spatie\Html\Elements\Element` class via the `withTag` method.
+Any HTML element can be created from the generic `DefStudio\Html\Elements\Element` class via the `withTag` method.
 
 For example to create a `<p>` tag:
 

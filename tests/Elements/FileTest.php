@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Test\Elements;
+namespace DefStudio\Html\Test\Elements;
 
-use Spatie\Html\Elements\File;
-use Spatie\Html\Test\TestCase;
+use DefStudio\Html\Elements\File;
+use DefStudio\Html\Test\TestCase;
 
 class FileTest extends TestCase
 {

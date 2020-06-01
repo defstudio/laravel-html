@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\Html\Test\Elements;
+namespace DefStudio\Html\Test\Elements;
 
-use Spatie\Html\Elements\Input;
-use Spatie\Html\Test\TestCase;
+use DefStudio\Html\Elements\Input;
+use DefStudio\Html\Test\TestCase;
 
 class InputTest extends TestCase
 {

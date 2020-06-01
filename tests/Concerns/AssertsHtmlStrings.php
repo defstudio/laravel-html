@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Html\Test\Concerns;
+namespace DefStudio\Html\Test\Concerns;
 
 use DOMDocument;
 

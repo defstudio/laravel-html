@@ -12,6 +12,12 @@ use DefStudio\Html\Exceptions\InvalidChild;
 use DefStudio\Html\Exceptions\InvalidHtml;
 use DefStudio\Html\Exceptions\MissingTag;
 
+/**
+ * Class BaseElement
+ * @package DefStudio\Html
+ * @method attributeIf($condition, $name, $value)
+ * @method attributeIfNotNull($condition, $name, $value)
+ */
 abstract class BaseElement implements Htmlable, HtmlElement
 {
     use Macroable {

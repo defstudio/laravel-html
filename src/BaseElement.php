@@ -3,14 +3,15 @@
 namespace DefStudio\Html;
 
 use BadMethodCallException;
+use Closure;
+use DefStudio\Html\Exceptions\InvalidChild;
+use DefStudio\Html\Exceptions\InvalidHtml;
+use DefStudio\Html\Exceptions\MissingTag;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use DefStudio\Html\Exceptions\InvalidChild;
-use DefStudio\Html\Exceptions\InvalidHtml;
-use DefStudio\Html\Exceptions\MissingTag;
 
 /**
  * Class BaseElement
@@ -27,10 +28,10 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /** @var string */
     protected $tag;
 
-    /** @var \DefStudio\Html\Attributes */
+    /** @var Attributes */
     protected $attributes;
 
-    /** @var \Illuminate\Support\Collection */
+    /** @var Collection */
     protected $children;
 
     public function __construct()
@@ -43,9 +44,12 @@ abstract class BaseElement implements Htmlable, HtmlElement
         $this->children = new Collection();
     }
 
-    public static function create()
-    {
+    public static function create(){
         return new static();
+    }
+
+    public function tooltip($text, $placement = 'bottom'){
+        return $this->attribute('data-toggle', 'tooltip')->attribute('data-container', 'body')->attribute('data-placement', $placement)->attribute('title', $text);
     }
 
     /**
@@ -54,8 +58,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
      *
      * @return static
      */
-    public function attribute($attribute, $value = null)
-    {
+    public function attribute($attribute, $value = null){
         $element = clone $this;
 
         $element->attributes->setAttribute($attribute, (string) $value);
@@ -176,7 +179,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     }
 
     /**
-     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
+     * @param HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -199,7 +202,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `addChildren`.
      *
-     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
+     * @param HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -212,7 +215,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `addChildren`.
      *
-     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
+     * @param HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -225,7 +228,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `addChildren`.
      *
-     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
+     * @param HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -238,7 +241,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Replace all children with an array of elements.
      *
-     * @param \DefStudio\Html\HtmlElement[] $children
+     * @param HtmlElement[] $children
      * @param callable|null $mapper
      *
      * @return static
@@ -253,7 +256,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     }
 
     /**
-     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
+     * @param HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -272,7 +275,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `prependChildren`.
      *
-     * @param \DefStudio\Html\HtmlElement|string|iterable|null $children
+     * @param HtmlElement|string|iterable|null $children
      * @param callable|null $mapper
      *
      * @return static
@@ -311,12 +314,11 @@ abstract class BaseElement implements Htmlable, HtmlElement
      * immutable, you'll need to return a new instance from the callback.
      *
      * @param bool $condition
-     * @param \Closure $callback
+     * @param Closure $callback
      *
      * @return mixed
      */
-    public function if(bool $condition, \Closure $callback)
-    {
+    public function if(bool $condition, Closure $callback){
         return $condition ? $callback($this) : $this;
     }
 
@@ -325,13 +327,12 @@ abstract class BaseElement implements Htmlable, HtmlElement
      * immutable, you'll need to return a new instance from the callback.
      *
      * @param bool $condition
-     * @param \Closure $callback
+     * @param Closure $callback
      *
      * @return mixed
      */
-    public function unless(bool $condition, \Closure $callback)
-    {
-        return $this->if(! $condition, $callback);
+    public function unless(bool $condition, Closure $callback){
+        return $this->if(!$condition, $callback);
     }
 
     /**
@@ -339,17 +340,16 @@ abstract class BaseElement implements Htmlable, HtmlElement
      * immutable, you'll need to return a new instance from the callback.
      *
      * @param mixed $value
-     * @param \Closure $callback
+     * @param Closure $callback
      *
      * @return mixed
      */
-    public function ifNotNull($value, \Closure $callback)
-    {
-        return ! is_null($value) ? $callback($this) : $this;
+    public function ifNotNull($value, Closure $callback){
+        return !is_null($value) ? $callback($this) : $this;
     }
 
     /**
-     * @return \Illuminate\Contracts\Support\Htmlable
+     * @return Htmlable
      */
     public function open()
     {
@@ -377,7 +377,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     }
 
     /**
-     * @return \Illuminate\Contracts\Support\Htmlable
+     * @return Htmlable
      */
     public function close()
     {
@@ -389,7 +389,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     }
 
     /**
-     * @return \Illuminate\Contracts\Support\Htmlable
+     * @return Htmlable
      */
     public function render()
     {

@@ -14,4 +14,5 @@ class Button extends BaseElement
     use Type;
 
     protected $tag = 'button';
+
 }

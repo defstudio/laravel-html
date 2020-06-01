@@ -4,15 +4,6 @@
 
     use ArrayAccess;
     use DateTimeImmutable;
-    use Exception;
-    use Illuminate\Contracts\Support\Htmlable;
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Arr;
-    use Illuminate\Support\Collection;
-    use Illuminate\Support\Facades\Lang;
-    use Illuminate\Support\HtmlString;
-    use Illuminate\Support\Str;
-    use Illuminate\Support\Traits\Macroable;
     use DefStudio\Html\Elements\A;
     use DefStudio\Html\Elements\Button;
     use DefStudio\Html\Elements\Div;
@@ -29,6 +20,15 @@
     use DefStudio\Html\Elements\Select;
     use DefStudio\Html\Elements\Span;
     use DefStudio\Html\Elements\Textarea;
+    use Exception;
+    use Illuminate\Contracts\Support\Htmlable;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Arr;
+    use Illuminate\Support\Collection;
+    use Illuminate\Support\Facades\Lang;
+    use Illuminate\Support\HtmlString;
+    use Illuminate\Support\Str;
+    use Illuminate\Support\Traits\Macroable;
     use ReflectionClass;
     use ReflectionException;
 
@@ -45,6 +45,8 @@
         protected $model;
 
         private $name_patterns = [];
+
+        private $draft_overrides = [];
 
         public function __construct(Request $request){
             $this->request = $request;
@@ -69,6 +71,10 @@
 
         private function apply_name_pattern($name){
 
+            if(Str::startsWith($name, "/")){
+                return Str::substr($name, 1);
+            }
+
             $pattern = Arr::last($this->name_patterns);
 
             if(empty($name) || empty($pattern)) return $name;
@@ -87,7 +93,7 @@
          * @return $this
          * @noinspection PhpUnused
          */
-        public function clear_name_pattern(){
+        public function unset_name_pattern(){
             array_pop($this->name_patterns);
             return $this;
         }
@@ -127,19 +133,10 @@
          * @param $text
          * @param string $placement
          * @return BaseElement|I
-         * @throws Exceptions\InvalidHtml
+         * @throws Exceptions\InvalidHtml|ReflectionException
          */
         public function help($text, $placement = 'bottom'){
-            //@formatter:off
-            return I::create()
-                    ->class("fas")
-                    ->class("fa-question")
-                    ->attribute('data-toggle', 'tooltip')
-                    ->attribute('data-container', 'body')
-                    ->attribute('data-placement', $placement)
-                    ->attribute('title', $text)
-                    ->html(null);
-            //@formatter:on
+            return $this->icon("question")->tooltip($text, $placement);
         }
 
         /**
@@ -157,7 +154,7 @@
             }
 
             if(!Str::startsWith($name, "fa-")) $name = "fa-$name";
-            return I::create()->class($style)->class($name)->html(null);
+            return $this->i()->class($style)->class($name)->html(null);
         }
 
         /**
@@ -165,19 +162,10 @@
          * @param $text
          * @param string $placement
          * @return BaseElement|I
-         * @throws Exceptions\InvalidHtml
+         * @throws Exceptions\InvalidHtml|ReflectionException
          */
         public function info($text, $placement = 'bottom'){
-            //@formatter:off
-            return I::create()
-                    ->class("fas")
-                    ->class("fa-info")
-                    ->attribute('data-toggle', 'tooltip')
-                    ->attribute('data-container', 'body')
-                    ->attribute('data-placement', $placement)
-                    ->attribute('title', $text)
-                    ->html(null);
-            //@formatter:on
+            return $this->icon("info")->tooltip($text, $placement);
         }
 
 
@@ -241,11 +229,10 @@
          * @return Input
          */
         public function checkbox($name = null, $checked = null, $value = '1'){
-            $processed_name = $this->apply_name_pattern($name);
             //@formatter:off
             return $this->input('checkbox', $name, $value)
                         ->attributeIf(!is_null($value), 'value', $value)
-                        ->attributeIf((bool) $this->old($processed_name, $checked), 'checked');
+                        ->attributeIf((bool) $this->old($name, $checked), 'checked');
             //@formatter:on
         }
 
@@ -349,15 +336,15 @@
          * @return Input
          */
         public function input($type = null, $name = null, $value = null){
-            $name = $this->apply_name_pattern($name);
 
             $hasValue = $name && ($type !== 'password' && !is_null($this->old($name, $value)) || !is_null($value));
+
 
             //@formatter:off
             return Input::create()
                         ->attributeIf($type, 'type', $type)
                         ->attributeIf($name, 'name', $this->fieldName($name))
-                        ->attributeIf($name, 'id', $this->fieldName($name))
+                        ->attributeIf($name, 'id', $this->dot_field_name($name))
                         ->attributeIf($hasValue, 'value', $this->old($name, $value));
             //@formatter:on
         }
@@ -426,7 +413,7 @@
          * @return Label
          */
         public function label($contents = null, $for = null){
-            return Label::create()->attributeIf($for, 'for', $this->fieldName($for))->children($contents);
+            return Label::create()->attributeIf($for, 'for', $this->dot_field_name($for))->children($contents);
         }
 
         /**
@@ -457,8 +444,13 @@
          * @return Select
          */
         public function multiselect($name = null, $options = [], $value = null){
-            $name = $this->apply_name_pattern($name);
-            return Select::create()->attributeIf($name, 'name', $this->fieldName($name))->attributeIf($name, 'id', $this->fieldName($name))->options($options)->value($name ? $this->old($name, $value) : $value)->multiple();
+            //@formatter:off
+            return Select::create()
+                         ->attributeIf($name, 'name', $this->fieldName($name))
+                         ->attributeIf($name, 'id', $this->fieldName($name))
+                         ->options($options)->value($name ? $this->old($name, $value) : $value)
+                                            ->multiple();
+            //@formatter:on
         }
 
         /**
@@ -468,7 +460,7 @@
          * @noinspection PhpUnused
          */
         public function select_month($name = null, $value = null){
-            return $this->select($name, Lang::get('html:strings.months'), $value);
+            return $this->select($name, Lang::get('html::strings.months'), $value);
         }
 
         /**
@@ -512,12 +504,11 @@
          * @return Input
          */
         public function radio($name = null, $checked = null, $value = null){
-            $processed_name = $this->apply_name_pattern($name);
             //@formatter:off
             return $this->input('radio', $name, $value)
-                        ->attributeIf($processed_name, 'id', $value === null ? $processed_name : ($processed_name . '_' . Str::slug($value)))
+                        ->attributeIf($name, 'id', $value === null ? $this->dot_field_name($name) : ($this->dot_field_name($name) . '_' . Str::slug($value)))
                         ->attributeIf(!is_null($value), 'value', $value)
-                        ->attributeIf((!is_null($value) && $this->old($processed_name) == $value) || $checked, 'checked');
+                        ->attributeIf((!is_null($value) && $this->old($name) == $value) || $checked, 'checked');
             //@formatter:on
         }
 
@@ -529,8 +520,13 @@
          * @return Select
          */
         public function select($name = null, $options = [], $value = null){
-            $name = $this->apply_name_pattern($name);
-            return Select::create()->attributeIf($name, 'name', $this->fieldName($name))->attributeIf($name, 'id', $this->fieldName($name))->options($options)->value($name ? $this->old($name, $value) : $value);
+            //@formatter:off
+            return Select::create()
+                         ->attributeIf($name, 'name', $this->fieldName($name))
+                         ->attributeIf($name, 'id', $this->fieldName($name))
+                         ->options($options)
+                         ->value($name ? $this->old($name, $value) : $value);
+            //@formatter:on
         }
 
         /**
@@ -661,18 +657,52 @@
                 return null;
             }
 
-            // Convert array format (sth[1]) to dot notation (sth.1)
-            /** @noinspection RegExpRedundantEscape */
-            $name = preg_replace('/\[(.+)\]/U', '.$1', $name);
+
+            $processed_name = $this->array_format_to_dot_notation($this->apply_name_pattern($name));
+
 
             // If there's no default value provided, the html builder currently
             // has a model assigned and there aren't old input items,
             // try to retrieve a value from the model.
             if(is_null($value) && $this->model && empty($this->request->old())){
-                $value = data_get($this->model, $name) ?? '';
+                $value = data_get($this->model, $processed_name) ?? '';
             }
 
-            return $this->request->old($name, $value);
+            return $this->request->old($processed_name, $this->draft($name, $value));
+        }
+
+        public function has_draft(){
+            return !empty($this->draft());
+        }
+
+        /**
+         * Convert array format (sth[1]) to dot notation (sth.1)
+         * @param $name
+         * @noinspection RegExpRedundantEscape
+         * @return string
+         */
+        private function array_format_to_dot_notation($name){
+            return preg_replace('/\[(.+)\]/U', '.$1', $name);
+        }
+
+        /**
+         * Forces draft key to a new value
+         * @param $name
+         * @param $value
+         * @return Html
+         */
+        public function set_draft_value($name, $value){
+            $name = $this->array_format_to_dot_notation($this->apply_name_pattern($name));
+            $this->draft_overrides[$name] = $value;
+            return $this;
+        }
+
+        public function draft($name = '', $default = null){
+            if(empty($name)) return $this->request->session()->get('draft');
+
+            $name = $this->array_format_to_dot_notation($this->apply_name_pattern($name));
+
+            return $this->draft_overrides[$name] ?? $this->request->session()->get("draft.$name", $default);
         }
 
         /**
@@ -689,12 +719,21 @@
         }
 
         /**
+         * Convert a field name to dot notation
+         * @param $name
+         * @return string
+         */
+        public function dot_field_name($name){
+            return $this->array_format_to_dot_notation($this->fieldName($name));
+        }
+
+        /**
          * @param string $name
          *
          * @return string
          */
-        protected function fieldName($name){
-            return $name;
+        public function fieldName($name){
+            return $this->apply_name_pattern($name);
         }
 
         /**

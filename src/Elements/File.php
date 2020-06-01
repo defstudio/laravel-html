@@ -6,6 +6,7 @@ use DefStudio\Html\BaseElement;
 use DefStudio\Html\Elements\Attributes\Autofocus;
 use DefStudio\Html\Elements\Attributes\Name;
 use DefStudio\Html\Elements\Attributes\Required;
+use DefStudio\Html\Exceptions\InvalidHtml;
 
 class File extends BaseElement
 {
@@ -63,8 +64,16 @@ class File extends BaseElement
     /**
      * @return static
      */
-    public function multiple()
-    {
+    public function multiple(){
         return $this->attribute('multiple');
+    }
+
+    /**
+     * @param string $label
+     * @return Div
+     * @throws InvalidHtml
+     */
+    public function custom($label = "Choose File"){
+        return Div::create()->class('custom-file')->child($this->class('custom-file-input'))->child(Label::create()->class("custom-file-label")->for($this->getAttribute('id'))->html($label));
     }
 }

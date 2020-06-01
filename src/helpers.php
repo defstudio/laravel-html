@@ -1,13 +1,12 @@
 <?php
 
-use DefStudio\Html\Html;
+    use DefStudio\Html\Html;
 
-if (! function_exists('html')) {
-    /**
-     * @return \DefStudio\Html\Html
-     */
-    function html()
-    {
-        return app(Html::class);
+    if(!function_exists('h')){
+        /**
+         * @return Html
+         */
+        function h(){
+            return app(Html::class);
+        }
     }
-}

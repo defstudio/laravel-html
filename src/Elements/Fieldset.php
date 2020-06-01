@@ -3,13 +3,14 @@
 namespace DefStudio\Html\Elements;
 
 use DefStudio\Html\BaseElement;
+use DefStudio\Html\HtmlElement;
 
 class Fieldset extends BaseElement
 {
     protected $tag = 'fieldset';
 
     /**
-     * @param \DefStudio\Html\HtmlElement|string $text
+     * @param HtmlElement|string $text
      *
      * @return static
      */

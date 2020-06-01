@@ -2,10 +2,11 @@
 
 namespace DefStudio\Html;
 
-interface HtmlElement
-{
+use Illuminate\Contracts\Support\Htmlable;
+
+interface HtmlElement{
     /**
-     * @return \Illuminate\Contracts\Support\Htmlable
+     * @return Htmlable
      */
     public function render();
 }

@@ -10,6 +10,7 @@ use DefStudio\Html\Elements\Attributes\Name;
 use DefStudio\Html\Elements\Attributes\Placeholder;
 use DefStudio\Html\Elements\Attributes\Readonly;
 use DefStudio\Html\Elements\Attributes\Required;
+use DefStudio\Html\Exceptions\InvalidHtml;
 
 class Textarea extends BaseElement
 {
@@ -27,7 +28,7 @@ class Textarea extends BaseElement
      * @param string|null $value
      *
      * @return static
-     * @throws \DefStudio\Html\Exceptions\InvalidHtml
+     * @throws InvalidHtml
      */
     public function value($value)
     {

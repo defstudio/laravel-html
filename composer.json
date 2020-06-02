@@ -2,8 +2,7 @@
     "name": "defstudio/laravel-html",
     "description": "A fluent html builder - spatie/laravel-html fork",
     "keywords": [
-        "spatie",
-        "html"
+       "html"
     ],
     "homepage": "https://defstudio.it/packages/laravel-html",
     "license": "MIT",

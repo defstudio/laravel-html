@@ -593,7 +593,6 @@
          * @return Textarea
          */
         public function textarea($name = null, $value = null){
-            $name = $this->apply_name_pattern($name);
             return Textarea::create()->attributeIf($name, 'name', $this->fieldName($name))->attributeIf($name, 'id', $this->fieldName($name))->value($this->old($name, $value));
         }
 
@@ -715,7 +714,9 @@
          * @return mixed
          */
         public function value($name, $default = null){
-            return $this->old($name, $default);
+            $value = $this->old($name);
+            if(empty($value)) return $default;
+            return $value;
         }
 
         /**

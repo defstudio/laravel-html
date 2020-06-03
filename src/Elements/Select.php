@@ -2,23 +2,24 @@
 
 namespace DefStudio\Html\Elements;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use DefStudio\Html\BaseElement;
 use DefStudio\Html\Elements\Attributes\Autofocus;
+use DefStudio\Html\Elements\Attributes\ChecksError;
 use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\Name;
 use DefStudio\Html\Elements\Attributes\Readonly;
 use DefStudio\Html\Elements\Attributes\Required;
 use DefStudio\Html\Selectable;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
-class Select extends BaseElement
-{
+class Select extends BaseElement{
     use Autofocus;
     use Disabled;
     use Name;
     use Required;
     use Readonly;
+    use ChecksError;
 
     /** @var string */
     protected $tag = 'select';

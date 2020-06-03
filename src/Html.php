@@ -102,7 +102,7 @@
          * @param BaseElement $input
          * @param string $helper_text
          * @return BaseElement|Div
-         * @throws Exceptions\InvalidHtml
+         * @throws Exceptions\InvalidHtml|ReflectionException
          * @noinspection PhpUnused
          */
         public function append_helper(BaseElement $input, string $helper_text){
@@ -342,6 +342,7 @@
 
             //@formatter:off
             return Input::create()
+                        ->checks_error($this->dot_field_name($name))
                         ->attributeIf($type, 'type', $type)
                         ->attributeIf($name, 'name', $this->fieldName($name))
                         ->attributeIf($name, 'id', $this->dot_field_name($name))
@@ -446,6 +447,7 @@
         public function multiselect($name = null, $options = [], $value = null){
             //@formatter:off
             return Select::create()
+                         ->checks_error($this->dot_field_name($name))
                          ->attributeIf($name, 'name', $this->fieldName($name))
                          ->attributeIf($name, 'id', $this->fieldName($name))
                          ->options($options)->value($name ? $this->old($name, $value) : $value)
@@ -522,6 +524,7 @@
         public function select($name = null, $options = [], $value = null){
             //@formatter:off
             return Select::create()
+                         ->checks_error($this->dot_field_name($name))
                          ->attributeIf($name, 'name', $this->fieldName($name))
                          ->attributeIf($name, 'id', $this->fieldName($name))
                          ->options($options)
@@ -583,7 +586,12 @@
          */
         public function file($name = null){
             $name = $this->apply_name_pattern($name);
-            return File::create()->attributeIf($name, 'name', $this->fieldName($name))->attributeIf($name, 'id', $this->fieldName($name));
+            //@formatter:off
+            return File::create()
+                        ->checks_error($this->dot_field_name($name))
+                       ->attributeIf($name, 'name', $this->fieldName($name))
+                       ->attributeIf($name, 'id', $this->fieldName($name));
+            //@formatter:on
         }
 
         /**
@@ -593,7 +601,13 @@
          * @return Textarea
          */
         public function textarea($name = null, $value = null){
-            return Textarea::create()->attributeIf($name, 'name', $this->fieldName($name))->attributeIf($name, 'id', $this->fieldName($name))->value($this->old($name, $value));
+            //@formatter:off
+            return Textarea::create()
+                           ->checks_error($this->dot_field_name($name))
+                           ->attributeIf($name, 'name', $this->fieldName($name))
+                           ->attributeIf($name, 'id', $this->fieldName($name))
+                           ->value($this->old($name, $value));
+            //@formatter:o0n
         }
 
         /**

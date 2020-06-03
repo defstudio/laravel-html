@@ -4,6 +4,7 @@ namespace DefStudio\Html\Elements;
 
 use DefStudio\Html\BaseElement;
 use DefStudio\Html\Elements\Attributes\Autofocus;
+use DefStudio\Html\Elements\Attributes\ChecksError;
 use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\MinMaxLength;
 use DefStudio\Html\Elements\Attributes\Name;
@@ -12,8 +13,7 @@ use DefStudio\Html\Elements\Attributes\Readonly;
 use DefStudio\Html\Elements\Attributes\Required;
 use DefStudio\Html\Exceptions\InvalidHtml;
 
-class Textarea extends BaseElement
-{
+class Textarea extends BaseElement{
     use Autofocus;
     use Placeholder;
     use Name;
@@ -21,6 +21,8 @@ class Textarea extends BaseElement
     use Disabled;
     use Readonly;
     use MinMaxLength;
+    use ChecksError;
+
 
     protected $tag = 'textarea';
 

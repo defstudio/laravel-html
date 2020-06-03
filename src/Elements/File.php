@@ -4,6 +4,7 @@ namespace DefStudio\Html\Elements;
 
 use DefStudio\Html\BaseElement;
 use DefStudio\Html\Elements\Attributes\Autofocus;
+use DefStudio\Html\Elements\Attributes\ChecksError;
 use DefStudio\Html\Elements\Attributes\Name;
 use DefStudio\Html\Elements\Attributes\Required;
 use DefStudio\Html\Exceptions\InvalidHtml;
@@ -13,6 +14,7 @@ class File extends BaseElement
     use Autofocus;
     use Name;
     use Required;
+    use ChecksError;
 
     protected $tag = 'input';
 

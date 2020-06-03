@@ -4,6 +4,7 @@ namespace DefStudio\Html\Elements;
 
 use DefStudio\Html\BaseElement;
 use DefStudio\Html\Elements\Attributes\Autofocus;
+use DefStudio\Html\Elements\Attributes\ChecksError;
 use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\MinMaxLength;
 use DefStudio\Html\Elements\Attributes\Name;
@@ -24,6 +25,7 @@ class Input extends BaseElement
     use Required;
     use Type;
     use Value;
+    use ChecksError;
 
     protected $tag = 'input';
 

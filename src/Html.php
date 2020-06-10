@@ -225,15 +225,30 @@
          * @param string|null $name
          * @param bool $checked
          * @param string|null $value
-         *
+         * @param bool $array_field
          * @return Input
          */
-        public function checkbox($name = null, $checked = null, $value = '1'){
-            //@formatter:off
-            return $this->input('checkbox', $name, $value)
-                        ->attributeIf(!is_null($value), 'value', $value)
-                        ->attributeIf((bool) $this->old($name, $checked), 'checked');
-            //@formatter:on
+        public function checkbox($name = null, $checked = null, $value = '1', $array_field = false){
+
+            if($array_field){
+                $field_values = $this->old($name);
+                if(empty($field_values)) $field_values = [];
+                $field_values = Arr::wrap($field_values);
+
+                //@formatter:off
+                return $this->input('checkbox', $name, $value)
+                            ->id($this->dashed_field_name($name)."_$value")
+                            ->attributeIf(!is_null($value), 'value', $value)
+                            ->attributeIf(in_array($value, $field_values), 'checked');
+                //@formatter:on
+            } else{
+                //@formatter:off
+                return $this->input('checkbox', $name, $value)
+                            ->attributeIf(!is_null($value), 'value', $value)
+                            ->attributeIf((bool) $this->old($name, $checked), 'checked');
+                //@formatter:on
+            }
+
         }
 
         /**
@@ -345,7 +360,7 @@
                         ->checks_error($this->dot_field_name($name))
                         ->attributeIf($type, 'type', $type)
                         ->attributeIf($name, 'name', $this->fieldName($name))
-                        ->attributeIf($name, 'id', $this->dot_field_name($name))
+                        ->attributeIf($name, 'id', $this->dashed_field_name($name))
                         ->attributeIf($hasValue, 'value', $this->old($name, $value));
             //@formatter:on
         }
@@ -414,7 +429,7 @@
          * @return Label
          */
         public function label($contents = null, $for = null){
-            return Label::create()->attributeIf($for, 'for', $this->dot_field_name($for))->children($contents);
+            return Label::create()->attributeIf($for, 'for', $this->dashed_field_name($for))->children($contents);
         }
 
         /**
@@ -508,7 +523,7 @@
         public function radio($name = null, $checked = null, $value = null){
             //@formatter:off
             return $this->input('radio', $name, $value)
-                        ->attributeIf($name, 'id', $value === null ? $this->dot_field_name($name) : ($this->dot_field_name($name) . '_' . Str::slug($value)))
+                        ->attributeIf($name, 'id', $value === null ? $this->dashed_field_name($name) : ($this->dashed_field_name($name) . '_' . Str::slug($value)))
                         ->attributeIf(!is_null($value), 'value', $value)
                         ->attributeIf((!is_null($value) && $this->old($name) == $value) || $checked, 'checked');
             //@formatter:on

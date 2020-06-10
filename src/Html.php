@@ -670,7 +670,6 @@
                 return null;
             }
 
-
             $processed_name = $this->array_format_to_dot_notation($this->apply_name_pattern($name));
 
 
@@ -695,7 +694,18 @@
          * @return string
          */
         private function array_format_to_dot_notation($name){
-            return preg_replace('/\[(.+)\]/U', '.$1', $name);
+            $name = preg_replace('/\[(.+)\]/U', '.$1', $name);
+            $name = preg_replace('/\[\]/U', '', $name);
+            return $name;
+        }
+
+        /**
+         * Convert array format (sth[1]) to dash notation (sth_1)
+         * @param $name
+         * @return string
+         */
+        private function array_format_to_dash_notation($name){
+            return str_replace('.', '_', $this->array_format_to_dot_notation($name));
         }
 
         /**
@@ -742,6 +752,10 @@
          */
         public function dot_field_name($name){
             return $this->array_format_to_dot_notation($this->fieldName($name));
+        }
+
+        public function dashed_field_name($name){
+            return $this->array_format_to_dash_notation($this->fieldName($name));
         }
 
         /**

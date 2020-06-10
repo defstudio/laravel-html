@@ -16,7 +16,7 @@ use Illuminate\Support\Traits\Macroable;
 /**
  * Class BaseElement
  * @package DefStudio\Html
- * @method attributeIf($condition, $name, $value)
+ * @method attributeIf($condition, $name, $value = null)
  * @method attributeIfNotNull($condition, $name, $value)
  */
 abstract class BaseElement implements Htmlable, HtmlElement

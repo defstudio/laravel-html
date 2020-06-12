@@ -480,6 +480,11 @@
             return $this->select($name, Lang::get('html::strings.months'), $value);
         }
 
+        public function float($name = null, $value = null, $min = null, $max = null, $step = null){
+            if(empty($step)) $step = "any";
+            return $this->number($name, $value, $min, $max, $step);
+        }
+
         /**
          * @param string|null $name
          * @param string|null $value

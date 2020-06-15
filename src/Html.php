@@ -352,7 +352,7 @@
          */
         public function input($type = null, $name = null, $value = null){
 
-            $hasValue = $name && ($type !== 'password' && !is_null($this->old($name, $value)) || !is_null($value));
+            $hasValue = $name && ($type !== 'password' && (!is_null($this->old($name, $value)) || !is_null($value)));
 
 
             //@formatter:off

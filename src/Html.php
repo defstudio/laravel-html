@@ -168,7 +168,6 @@
             return $this->icon("info")->tooltip($text, $placement);
         }
 
-
         /**
          * @param string|null $href
          * @param $contents

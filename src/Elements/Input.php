@@ -5,6 +5,7 @@ namespace DefStudio\Html\Elements;
 use DefStudio\Html\BaseElement;
 use DefStudio\Html\Elements\Attributes\Autofocus;
 use DefStudio\Html\Elements\Attributes\ChecksError;
+use DefStudio\Html\Elements\Attributes\CustomCheckbox;
 use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\MinMaxLength;
 use DefStudio\Html\Elements\Attributes\Name;
@@ -29,11 +30,13 @@ class Input extends BaseElement
 
     protected $tag = 'input';
 
+    protected $custom_checkbox_label;
+
+
     /**
      * @return static
      */
-    public function unchecked()
-    {
+    public function unchecked(){
         return $this->checked(false);
     }
 
@@ -58,4 +61,6 @@ class Input extends BaseElement
     {
         return $this->attribute('size', $size);
     }
+
+
 }

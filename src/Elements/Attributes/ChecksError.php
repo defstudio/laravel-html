@@ -9,6 +9,7 @@
     use DefStudio\Html\Exceptions\InvalidHtml;
     use Illuminate\Contracts\Support\Htmlable;
     use Illuminate\Support\HtmlString;
+    use Illuminate\Support\Str;
     use Illuminate\Support\ViewErrorBag;
     use Session;
 
@@ -54,14 +55,18 @@
                 //@formatter:off
                 $div = Div::create()
                           ->child($this->class('is-invalid'))
-                ->child(Div::create()
-                           ->class('invalid-tooltip')
-                           ->style('top: unset')
-                            ->html("<ul>".$messages."</ul>")
+                          ->child(Div::create()
+                          ->class('invalid-tooltip')
+                          ->style('top: unset')
+                          ->html("<ul>".$messages."</ul>")
                 );
-
-                return $div->render();
                 //@formatter:on
+
+                /** @var HtmlString $html */
+                $html = $div->render()->toHtml();
+                $html = Str::replaceFirst("<div>", "", $html);
+                $html = Str::replaceLast("</div>", "", $html);
+                return $html;
             }
 
             return parent::render();

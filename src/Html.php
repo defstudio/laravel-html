@@ -227,12 +227,15 @@
          * @param bool $array_field
          * @return Input
          */
-        public function checkbox($name = null, $checked = null, $value = '1', $array_field = false){
+        public function checkbox($name = null, $checked = null, $value = '1'){
+            $field_value = $this->old($name);
 
-            if($array_field){
-                $field_values = $this->old($name);
-                if(empty($field_values)) $field_values = [];
-                $field_values = Arr::wrap($field_values);
+            if(Str::endsWith($name, "[]") && !($field_value instanceof Collection)){
+
+
+                if(empty($field_value)) $field_value = [];
+
+                $field_values = Arr::wrap($field_value);
 
                 //@formatter:off
                 return $this->input('checkbox', $name, $value)
@@ -351,8 +354,7 @@
          */
         public function input($type = null, $name = null, $value = null){
 
-            $hasValue = $name && ($type !== 'password' && (!is_null($this->old($name, $value)) || !is_null($value)));
-
+            $hasValue = $name && ($type !== 'password' && $type !== 'checkbox' && (!is_null($this->old($name, $value)) || !is_null($value)));
 
             //@formatter:off
             return Input::create()

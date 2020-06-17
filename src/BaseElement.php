@@ -215,7 +215,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
     /**
      * Alias for `addChildren`.
      *
-     * @param HtmlElement|string|iterable|null $children
+     * @param $child
      * @param callable|null $mapper
      *
      * @return static
@@ -289,6 +289,7 @@ abstract class BaseElement implements Htmlable, HtmlElement
      * @param string|null $text
      *
      * @return static
+     * @throws InvalidHtml
      */
     public function text($text)
     {
@@ -296,9 +297,10 @@ abstract class BaseElement implements Htmlable, HtmlElement
     }
 
     /**
-     * @param string|null $html
+     * @param string|null|HtmlElement[] $html
      *
      * @return static
+     * @throws InvalidHtml
      */
     public function html($html)
     {

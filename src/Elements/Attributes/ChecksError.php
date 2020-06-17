@@ -16,12 +16,22 @@
             if(!empty($errors)){
                 if(!empty($name)){
                     if($errors->has($name)){
-                       return $this->class('is-invalid');
+                        return $this->class('is-invalid')->data('toggle', 'popover')->data('trigger', 'hover')->data('html', 'true')->data('title', "Attenzione")->data('content', $this->build_error_message($errors->get($name)))->data('placement', 'top');
                     }
                 }
             }
 
             return $this;
+        }
+
+        private function build_error_message(array $errors): string{
+            $html = "";
+
+            foreach($errors as $message){
+                $html .= "<div>$message</div>";
+            }
+
+            return "<div class='input-error-container'>$html</div>";
         }
 
     }

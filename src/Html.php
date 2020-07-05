@@ -228,7 +228,7 @@
          * @return Input
          */
         public function checkbox($name = null, $checked = null, $value = '1'){
-            $field_value = $this->old($name);
+            $field_value = $this->old($name, $checked);
 
             if(Str::endsWith($name, "[]") && !($field_value instanceof Collection)){
 

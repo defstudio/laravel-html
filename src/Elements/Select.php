@@ -41,9 +41,11 @@ class Select extends BaseElement{
 
         $name = $element->getAttribute('name');
 
-        if ($name && ! Str::endsWith($name, '[]')) {
-            $element = $element->name($name.'[]');
+        if($name && !Str::endsWith($name, '[]')){
+            $element = $element->name($name . '[]');
         }
+
+        $element = $element->class('multiselect');
 
         $element->applyValueToOptions();
 

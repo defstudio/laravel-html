@@ -466,19 +466,30 @@
                          ->checks_error($this->dot_field_name($name))
                          ->attributeIf($name, 'name', $this->fieldName($name))
                          ->attributeIf($name, 'id', $this->fieldName($name))
-                         ->options($options)->value($name ? $this->old($name, $value) : $value)
-                                            ->multiple();
+                         ->options($options)
+                         ->value($name ? $this->old($name, $value) : $value)
+                         ->multiple();
             //@formatter:on
         }
 
         /**
-         * @param null $name
-         * @param null $value
+         * @param string $name
+         * @param $value
          * @return Select
          * @noinspection PhpUnused
          */
         public function select_month($name = null, $value = null){
             return $this->select($name, Lang::get('html::strings.months'), $value);
+        }
+
+        /**
+         * @param string $name
+         * @param $value
+         * @return Select
+         * @noinspection PhpUnused
+         */
+        public function multiselect_month($name = null, $value = null){
+            return $this->multiselect($name, Lang::get('html::strings.months'), $value);
         }
 
         public function float($name = null, $value = null, $min = null, $max = null, $step = null){

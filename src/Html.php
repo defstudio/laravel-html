@@ -617,7 +617,6 @@
          * @return File
          */
         public function file($name = null){
-            $name = $this->apply_name_pattern($name);
             //@formatter:off
             return File::create()
                         ->checks_error($this->dot_field_name($name))

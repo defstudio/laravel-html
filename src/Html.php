@@ -204,6 +204,19 @@
             //@formatter:on
         }
 
+        public function collapse_button(string $target_id, $contents = null, $expanded = false){
+            //@formatter:off
+            return $this->button($contents, 'button')
+                ->id("$target_id-toggle-button")
+                ->data('toggle', 'collapse')
+                ->data('target', "#$target_id")
+                ->attributes([
+                    'aria-expanded' => $expanded?'true':'false',
+                    'aria-controls' => $target_id,
+                ]);
+            //@formatter:on
+        }
+
         /**
          * @param Collection|iterable|string $classes
          *
@@ -756,7 +769,13 @@
 
             $name = $this->array_format_to_dot_notation($this->apply_name_pattern($name));
 
-            return $this->draft_overrides[$name] ?? $this->request->session()->get("draft.$name", $default);
+            $value = Arr::get($this->draft_overrides,$name);
+
+            if(empty($value)){
+                $value = $this->request->session()->get("draft.$name", $default);
+            }
+
+            return $value;
         }
 
 

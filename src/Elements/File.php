@@ -34,16 +34,18 @@ class File extends BaseElement
      *
      * @return static
      */
-    public function accept($type)
-    {
+    public function accept($type){
         return $this->attribute('accept', $type);
+    }
+
+    public function accept_pdf(){
+        return $this->accept('application/pdf');
     }
 
     /**
      * @return static
      */
-    public function acceptAudio()
-    {
+    public function acceptAudio(){
         return $this->attribute('accept', self::ACCEPT_AUDIO);
     }
 

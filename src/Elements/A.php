@@ -19,4 +19,8 @@
         public function target($target){
             return $this->attribute('target', $target);
         }
+
+        public function target_blank(){
+            return $this->attribute('target', '_blank');
+        }
     }

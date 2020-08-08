@@ -3,8 +3,12 @@
     namespace DefStudio\Html\Elements;
 
     use DefStudio\Html\BaseElement;
+    use DefStudio\Html\Elements\Attributes\Target;
 
     class A extends BaseElement{
+        use Target;
+
+
         protected $tag = 'a';
 
         /**
@@ -16,11 +20,5 @@
             return $this->attribute('href', $href);
         }
 
-        public function target($target){
-            return $this->attribute('target', $target);
-        }
 
-        public function target_blank(){
-            return $this->attribute('target', '_blank');
-        }
     }

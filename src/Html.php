@@ -291,6 +291,16 @@
 
         }
 
+        public function custom_checkbox(string $name, string $label = '', $checked = null, $value = '1'){
+            $div = $this->div()->class('custom-control custom-checkbox');
+
+            $radio = $this->checkbox($name, $checked, $value)->class('custom-control-input');
+            $label = $this->label($label)->for($radio->getAttribute('id'))->class('custom-control-label');
+
+            return $div->addChild($radio)->addChild($label);
+        }
+
+
         /**
          * @param HtmlElement|string|null $contents
          *
@@ -614,9 +624,20 @@
             //@formatter:on
         }
 
+
+        public function custom_radio(string $name, string $label = '', $checked = null, $value = null){
+            $div = $this->div()->class('custom-control custom-radio');
+
+            $radio = $this->radio($name, $checked, $value)->class('custom-control-input');
+            $label = $this->label($label)->for($radio->getAttribute('id'))->class('custom-control-label');
+
+            return $div->addChild($radio)->addChild($label);
+        }
+
+
         /**
-         * @param string|null $name
-         * @param iterable|array $options
+         * @param string|null          $name
+         * @param iterable|array       $options
          * @param string|iterable|null $value
          *
          * @return Select

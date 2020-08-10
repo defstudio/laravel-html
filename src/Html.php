@@ -291,10 +291,10 @@
 
         }
 
-        public function custom_checkbox(string $name, string $label = '', $checked = null, $value = '1'){
+        public function custom_checkbox(string $name, string $label = '', $checked = null, $value = '1', $force_id = null){
             $div = $this->div()->class('custom-control custom-checkbox');
 
-            $radio = $this->checkbox($name, $checked, $value)->class('custom-control-input');
+            $radio = $this->checkbox($name, $checked, $value)->class('custom-control-input')->attributeIf($force_id, 'id', $force_id);
             $label = $this->label($label)->for($radio->getAttribute('id'))->class('custom-control-label');
 
             return $div->addChild($radio)->addChild($label);

@@ -48,13 +48,30 @@
 
         private $draft_overrides = [];
 
+        private $validation_rules = [];
+
         public function __construct(Request $request){
             $this->request = $request;
         }
 
+        public function set_validation_rules(array $rules){
+            $this->validation_rules = [];
+            foreach($rules as $rule_name => $rule){
+                $rule_name = str_replace(".", "\.", $rule_name);
+                $rule_name = str_replace("*", "[\w]*", $rule_name);
+                $this->validation_rules[$rule_name] = $rule;
+            }
+        }
+
+        public function unset_validation_rules(){
+            $this->validation_rules = [];
+        }
+
         /**
          * Sets current name pattern to be substituted to $name argument
+         *
          * @param $pattern
+         *
          * @return $this
          * @noinspection PhpUnused
          */
@@ -90,6 +107,7 @@
 
         /**
          * Deletes current name pattern setting
+         *
          * @return $this
          * @noinspection PhpUnused
          */
@@ -101,6 +119,7 @@
         /**
          * @param BaseElement $input
          * @param string $helper_text
+         *
          * @return BaseElement|Div
          * @throws Exceptions\InvalidHtml|ReflectionException
          * @noinspection PhpUnused
@@ -111,8 +130,10 @@
 
         /**
          * Append an item to another one
+         *
          * @param BaseElement $input
          * @param $item_to_append
+         *
          * @return BaseElement|Div
          */
         public function append(BaseElement $input, $item_to_append){
@@ -130,8 +151,10 @@
 
         /**
          * Displays an help symbol with given text
+         *
          * @param $text
          * @param string $placement
+         *
          * @return BaseElement|I
          * @throws Exceptions\InvalidHtml|ReflectionException
          */
@@ -141,8 +164,10 @@
 
         /**
          * Prints a FontAwesome icon
+         *
          * @param string $name icon name
          * @param string $style icon style
+         *
          * @return BaseElement|I
          * @throws Exceptions\InvalidHtml
          * @throws ReflectionException
@@ -375,6 +400,7 @@
                         ->attributeIf($type, 'type', $type)
                         ->attributeIf($name, 'name', $this->fieldName($name))
                         ->attributeIf($name, 'id', $this->dashed_field_name($name))
+                        ->attributeIf($this->is_field_required($name), 'required', 'true')
                         ->attributeIf($hasValue, 'value', $this->old($name, $value));
             //@formatter:on
         }
@@ -436,14 +462,43 @@
             return Img::create()->attributeIf($src, 'src', $src)->attributeIf($alt, 'alt', $alt);
         }
 
+        private function is_field_required($field_name): bool{
+            if(empty($field_name)) return false;
+
+
+            if(!empty($this->validation_rules)){
+                $field = $this->dot_field_name($field_name);
+
+                foreach($this->validation_rules as $rule_name => $rules){
+                    if(preg_match("/$rule_name/", $field)){
+                        if(!is_array($rules)) $rules = explode("|", $rules);
+
+                        if(in_array('required', $rules)){
+                            return true;
+                        } else{
+                            return false;
+                        }
+                    }
+                }
+
+            }
+
+            return false;
+        }
+
         /**
          * @param HtmlElement|iterable|string|null $contents
-         * @param string|null $for
+         * @param string|null                      $for
          *
          * @return Label
          */
         public function label($contents = null, $for = null){
-            return Label::create()->attributeIf($for, 'for', $this->dashed_field_name($for))->children($contents);
+            //@formatter:off
+            return Label::create()
+                        ->classIf($this->is_field_required($for), 'field-required')
+                        ->attributeIf($for, 'for', $this->dashed_field_name($for))
+                        ->children($contents);
+            //@formatter:on
         }
 
         /**

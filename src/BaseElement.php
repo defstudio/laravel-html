@@ -15,7 +15,9 @@
 
     /**
      * Class BaseElement
+     *
      * @package DefStudio\Html
+     * @method classIf($condition, $class)
      * @method attributeIf($condition, $name, $value = null)
      * @method attributeIfNotNull($condition, $name, $value)
      */

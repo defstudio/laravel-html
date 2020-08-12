@@ -5,7 +5,6 @@ namespace DefStudio\Html\Elements;
 use DefStudio\Html\BaseElement;
 use DefStudio\Html\Elements\Attributes\Autofocus;
 use DefStudio\Html\Elements\Attributes\ChecksError;
-use DefStudio\Html\Elements\Attributes\CustomCheckbox;
 use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\MinMaxLength;
 use DefStudio\Html\Elements\Attributes\Name;
@@ -15,6 +14,12 @@ use DefStudio\Html\Elements\Attributes\Required;
 use DefStudio\Html\Elements\Attributes\Type;
 use DefStudio\Html\Elements\Attributes\Value;
 
+/**
+ * Class Input
+ *
+ * @method readonlyIf($locked)
+ * @package DefStudio\Html\Elements
+ */
 class Input extends BaseElement
 {
     use Autofocus;

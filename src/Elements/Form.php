@@ -5,6 +5,13 @@
     use DefStudio\Html\BaseElement;
     use DefStudio\Html\Elements\Attributes\Target;
 
+    /**
+     * Class Form
+     *
+     * @method disable_autocompleteIf($autocomplete_disabled)
+     *
+     * @package DefStudio\Html\Elements
+     */
     class Form extends BaseElement{
         use Target;
 
@@ -45,5 +52,8 @@
             return $this->attribute('enctype', 'multipart/form-data');
         }
 
-
+        public function disable_autocomplete(){
+            h()->disable_autocomplete();
+            return $this->attribute('autocomplete', 'off');
+        }
     }

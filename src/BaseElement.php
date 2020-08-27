@@ -4,6 +4,7 @@
 
     use BadMethodCallException;
     use Closure;
+    use DefStudio\Html\Elements\Form;
     use DefStudio\Html\Exceptions\InvalidChild;
     use DefStudio\Html\Exceptions\InvalidHtml;
     use DefStudio\Html\Exceptions\MissingTag;
@@ -362,6 +363,8 @@
          * @return Htmlable
          */
         public function close(){
+            if($this instanceof Form) h()->enable_autocomplete();
+
             return new HtmlString($this->isVoidElement() ? '' : "</{$this->tag}>");
         }
 

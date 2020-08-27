@@ -18,6 +18,7 @@ use DefStudio\Html\Elements\Attributes\Value;
  * Class Input
  *
  * @method readonlyIf($locked)
+ * @method disable_autocompleteIf($autocomplete_disabled)
  * @package DefStudio\Html\Elements
  */
 class Input extends BaseElement
@@ -62,10 +63,12 @@ class Input extends BaseElement
      *
      * @return static
      */
-    public function size($size)
-    {
+    public function size($size){
         return $this->attribute('size', $size);
     }
 
+    public function disable_autocomplete(){
+        return $this->attribute('autocomplete', 'autocomplete_disabled');
+    }
 
 }

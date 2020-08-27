@@ -44,6 +44,8 @@
         /** @var ArrayAccess|array */
         protected $model;
 
+        private $autocomplete_enabled = true;
+
         private $name_patterns = [];
 
         private $draft_overrides = [];
@@ -52,6 +54,14 @@
 
         public function __construct(Request $request){
             $this->request = $request;
+        }
+
+        public function enable_autocomplete(){
+            $this->autocomplete_enabled = true;
+        }
+
+        public function disable_autocomplete(){
+            $this->autocomplete_enabled = false;
         }
 
         public function set_validation_rules(array $rules){
@@ -413,6 +423,17 @@
                         ->attributeIf($this->is_field_required($name), 'required', 'true')
                         ->attributeIf($hasValue, 'value', $this->old($name, $value));
             //@formatter:on
+
+        }
+
+        /**
+         * @param string|null $name
+         * @param string|null $value
+         *
+         * @return Input
+         */
+        public function text($name = null, $value = null){
+            return $this->input('text', $name, $value)->disable_autocompleteIf(!$this->autocomplete_enabled);
         }
 
         /**
@@ -690,15 +711,6 @@
             return $this->a('tel:' . $number, $text ?: $number);
         }
 
-        /**
-         * @param string|null $name
-         * @param string|null $value
-         *
-         * @return Input
-         */
-        public function text($name = null, $value = null){
-            return $this->input('text', $name, $value);
-        }
 
         /**
          * @param string|null $name

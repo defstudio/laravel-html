@@ -51,6 +51,7 @@
         private $draft_overrides = [];
 
         private $validation_rules = [];
+        private $validation_on_labels_only = false;
 
         public function __construct(Request $request){
             $this->request = $request;
@@ -64,7 +65,8 @@
             $this->autocomplete_enabled = false;
         }
 
-        public function set_validation_rules(array $rules){
+        public function set_validation_rules(array $rules, bool $labels_only = false){
+            $this->validation_on_labels_only = $labels_only;
             $this->validation_rules = [];
             foreach($rules as $rule_name => $rule){
                 $rule_name = str_replace(".", "\.", $rule_name);
@@ -420,7 +422,7 @@
                         ->attributeIf($type, 'type', $type)
                         ->attributeIf($name, 'name', $this->fieldName($name))
                         ->attributeIf($name, 'id', $this->dashed_field_name($name))
-                        ->attributeIf($this->is_field_required($name), 'required', 'true')
+                        ->attributeIf($this->validation_on_labels_only&&$this->is_field_required($name), 'required', 'true')
                         ->attributeIf($hasValue, 'value', $this->old($name, $value));
             //@formatter:on
 

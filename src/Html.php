@@ -731,9 +731,9 @@
         public function file($name = null){
             //@formatter:off
             return File::create()
-                        ->checks_error($this->dot_field_name($name))
-                       ->attributeIf($name, 'name', $this->fieldName($name))
-                       ->attributeIf($name, 'id', $this->fieldName($name));
+                        ->checks_error($name)
+                       ->attributeIf($name, 'name', $name)
+                       ->attributeIf($name, 'id', $name);
             //@formatter:on
         }
 

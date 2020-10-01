@@ -100,11 +100,30 @@
 
         private function apply_name_pattern($name){
 
+            if(Str::contains($name, '<..>')){
+                //apply_absolute_prefix
+                $elements = explode('<..>', $name);
+                $prefix = $elements[0];
+                $name = $elements[1];
+            }
+
             if(Str::startsWith($name, "/")){
+                //Don't use prefix
                 return Str::substr($name, 1);
             }
 
             $pattern = Arr::last($this->name_patterns);
+
+            if(!empty($prefix)){
+                if(empty($pattern)){
+                    $pattern = "{$prefix}[::]";
+                }else{
+                    $pieces = explode("[", $pattern);
+                    $pieces[0] = "{$prefix}[{$pieces[0]}]";
+                    $pattern = implode("[", $pieces);
+                }
+
+            }
 
             if(empty($name) || empty($pattern)) return $name;
 
@@ -731,9 +750,9 @@
         public function file($name = null){
             //@formatter:off
             return File::create()
-                        ->checks_error($name)
-                       ->attributeIf($name, 'name', $name)
-                       ->attributeIf($name, 'id', $name);
+                        ->checks_error($this->dot_field_name($name))
+                       ->attributeIf($name, 'name', $this->fieldName($name))
+                       ->attributeIf($name, 'id', $this->fieldName($name));
             //@formatter:on
         }
 

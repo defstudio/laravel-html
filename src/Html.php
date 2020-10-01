@@ -431,7 +431,7 @@
                         ->attributeIf($type, 'type', $type)
                         ->attributeIf($name, 'name', $this->fieldName($name))
                         ->attributeIf($name, 'id', $this->dashed_field_name($name))
-                        ->attributeIf($this->validation_on_labels_only&&$this->is_field_required($name), 'required', 'true')
+                        ->attributeIf(!$this->validation_on_labels_only && $this->is_field_required($name), 'required', 'true')
                         ->attributeIf($hasValue, 'value', $this->old($name, $value));
             //@formatter:on
 

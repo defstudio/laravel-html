@@ -16,7 +16,7 @@
             if(!empty($errors)){
                 if(!empty($name)){
                     if($errors->has($name)){
-                        return $this->class('is-invalid')->data('toggle', 'popover')->data('trigger', 'hover')->data('html', 'true')->data('title', "Attenzione")->data('content', $this->build_error_message($errors->get($name)))->data('placement', 'top');
+                        return $this->class('is-invalid');
                     }
                 }
             }

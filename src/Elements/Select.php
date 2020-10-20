@@ -61,7 +61,17 @@ class Select extends BaseElement{
     {
         return $this->addChildren($options, function ($text, $value) {
             if (is_array($text)) {
-                return $this->optgroup($value, $text);
+
+                if(isset($text['label'])){
+                    return Option::create()
+                        ->value($value)
+                        ->text($text['label'])
+                        ->class(implode(' ', $text['classes']??[]))
+                        ->selectedIf($value === $this->value);
+                }else{
+                    return $this->optgroup($value, $text);
+                }
+
             }
 
             return Option::create()

@@ -322,13 +322,17 @@
 
         }
 
-        public function custom_checkbox(string $name, string $label = '', $checked = null, $value = '1', $force_id = null){
+        public function custom_checkbox(string $name, string $label = '', $checked = null, $value = '1', $force_id = null, $inline=false){
             $div = $this->div()->class('custom-control custom-checkbox');
+            
+            if($inline){
+                $div = $div->class('custom-control-inline');
+            }
 
-            $radio = $this->checkbox($name, $checked, $value)->class('custom-control-input')->attributeIf($force_id, 'id', $force_id);
-            $label = $this->label($label)->for($radio->getAttribute('id'))->class('custom-control-label');
+            $checkbox = $this->checkbox($name, $checked, $value)->class('custom-control-input')->attributeIf($force_id, 'id', $force_id);
+            $label = $this->label($label)->for($checkbox->getAttribute('id'))->class('custom-control-label');
 
-            return $div->addChild($radio)->addChild($label);
+            return $div->addChild($checkbox)->addChild($label);
         }
 
         public function custom_switch(string $name, string $label = '', $checked = null, $value = '1', $force_id = null){

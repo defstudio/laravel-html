@@ -29,6 +29,7 @@
     use Illuminate\Support\HtmlString;
     use Illuminate\Support\Str;
     use Illuminate\Support\Traits\Macroable;
+	use Illuminate\Support\Facades\Session;
     use ReflectionClass;
     use ReflectionException;
 
@@ -780,7 +781,7 @@
          * @return Input
          */
         public function token(){
-            return $this->hidden()->name('_token')->value($this->request->session()->token());
+            return $this->hidden()->name('_token')->value(Session::token());
         }
 
         /**
@@ -887,14 +888,14 @@
         }
 
         public function draft($name = '', $default = null){
-            if(empty($name)) return $this->request->session()->get('draft');
+            if(empty($name)) return Session::get('draft');
 
             $name = $this->array_format_to_dot_notation($this->apply_name_pattern($name));
 
             $value = Arr::get($this->draft_overrides,$name);
 
             if(empty($value)){
-                $value = $this->request->session()->get("draft.$name", $default);
+                $value = Session::get("draft.$name", $default);
             }
 
             return $value;

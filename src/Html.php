@@ -703,7 +703,7 @@
             return Select::create()
                          ->checks_error($this->dot_field_name($name))
                          ->attributeIf($name, 'name', $this->fieldName($name))
-                         ->attributeIf($name, 'id', $this->fieldName($name))
+                         ->attributeIf($name, 'id', $this->dashed_field_name($name))
                          ->options($options)
                          ->value($name ? $this->old($name, $value) : $value);
             //@formatter:on

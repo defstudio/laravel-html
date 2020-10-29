@@ -674,7 +674,7 @@
         public function radio($name = null, $checked = null, $value = null){
             //@formatter:off
             return $this->input('radio', $name, $value)
-                        ->attributeIf($name, 'id', $value === null ? $this->dashed_field_name($name) : ($this->dashed_field_name($name) . '_' . Str::slug($value)))
+                        ->attributeIf($name, 'id', $value === null ? $this->dashed_field_name($name) : ($this->dashed_field_name($name) . '_' . $value))
                         ->attributeIf(!is_null($value), 'value', $value)
                         ->attributeIf((!is_null($value) && $this->old($name) == $value) || $checked, 'checked');
             //@formatter:on

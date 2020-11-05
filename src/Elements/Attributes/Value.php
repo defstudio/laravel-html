@@ -16,7 +16,7 @@ trait Value
 
     public function fallback_value($value){
         if(empty($this->getAttribute('value'))){
-            $this->value($value);
+            return $this->value($value);
         }
         return $this;
     }

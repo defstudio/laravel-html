@@ -447,14 +447,14 @@
          */
         public function input($type = null, $name = null, $value = null){
 
-            $hasValue = $name && ($type !== 'password' && $type !== 'checkbox' && (!is_null($this->old($name, $value)) || !is_null($value)));
+            $hasValue = ($name!=null) && ($type !== 'password' && $type !== 'checkbox' && (!is_null($this->old($name, $value)) || !is_null($value)));
 
             //@formatter:off
             return Input::create()
                         ->checks_error($this->dot_field_name($name))
                         ->attributeIf($type, 'type', $type)
-                        ->attributeIf($name, 'name', $this->fieldName($name))
-                        ->attributeIf($name, 'id', $this->dashed_field_name($name))
+                        ->attributeIf(($name!=null), 'name', $this->fieldName($name))
+                        ->attributeIf(($name!=null), 'id', $this->dashed_field_name($name))
                         ->attributeIf(!$this->validation_on_labels_only && $this->is_field_required($name), 'required', 'true')
                         ->attributeIf($hasValue, 'value', $this->old($name, $value));
             //@formatter:on
@@ -833,7 +833,7 @@
          * @return mixed
          */
         protected function old($name, $value = null){
-            if(empty($name)){
+            if(($name!=null)){
                 return null;
             }
 

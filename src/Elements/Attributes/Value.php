@@ -13,4 +13,11 @@ trait Value
     {
         return $this->attribute('value', $value);
     }
+
+    public function fallback_value($value){
+        if(empty($this->getAttribute('value'))){
+            $this->value($value);
+        }
+        return $this;
+    }
 }

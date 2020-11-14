@@ -53,6 +53,10 @@
             return $this->attribute('data-toggle', 'tooltip')->attribute('data-container', 'body')->attribute('data-placement', $placement)->attribute('title', $text);
         }
 
+        public function popover($text, $title = ''){
+            return $this->style('cursor: pointer')->attribute('data-toggle', 'popover')->attribute('title', $title)->attribute('data-content', $text);
+        }
+
         /**
          * @param string $attribute
          * @param string|null $value

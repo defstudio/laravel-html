@@ -133,6 +133,14 @@ class Select extends BaseElement{
         return $element;
     }
 
+    public function fallback_value($value){
+        if(empty($this->getAttribute('value'))){
+
+            return $this->value($value);
+        }
+        return $this;
+    }
+
     protected function hasSelection()
     {
         return $this->children->contains->hasAttribute('selected');

@@ -191,7 +191,7 @@
          * @throws Exceptions\InvalidHtml|ReflectionException
          */
         public function help($text, $placement = 'bottom'){
-            return $this->icon("question")->tooltip($text, $placement);
+            return $this->icon("question")->popover($text, "Aiuto");;
         }
 
         /**
@@ -325,7 +325,7 @@
 
         public function custom_checkbox(string $name, string $label = '', $checked = null, $value = '1', $force_id = null, $inline=false){
             $div = $this->div()->class('custom-control custom-checkbox');
-            
+
             if($inline){
                 $div = $div->class('custom-control-inline');
             }

@@ -54,7 +54,7 @@
         }
 
         public function popover($text, $title = ''){
-            return $this->style('cursor: pointer')->attribute('data-toggle', 'popover')->attribute('title', $title)->attribute('data-content', $text);
+            return $this->style('cursor: pointer')->attribute('data-toggle', 'popover')->attribute('data-trigger', 'focus')->attribute('title', $title)->attribute('data-content', $text);
         }
 
         /**

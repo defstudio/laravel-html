@@ -67,7 +67,7 @@ class Select extends BaseElement{
                         ->value($value)
                         ->text($text['label'])
                         ->class(implode(' ', $text['classes']??[]))
-                        ->dataIf(!empty($text['toggled-if']), 'toggled-if', $text['toggled-if']??'')
+                        ->dataIf(!empty($text['toggle-if']), 'toggle-if', $text['toggle-if']??'')
                         ->selectedIf($value === $this->value);
                 }else{
                     return $this->optgroup($value, $text);

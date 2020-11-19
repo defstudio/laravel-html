@@ -955,7 +955,7 @@ class Html
     public function set_draft_value($name, $value)
     {
         $name = $this->array_format_to_dot_notation($this->apply_name_pattern($name));
-        $this->draft_overrides[$name] = $value;
+        data_set($this->draft_overrides, $name, $value);
         return $this;
     }
 

@@ -73,7 +73,7 @@ class Html
     public function set_validation_rules(array $rules, bool $labels_only = false)
     {
 
-        if(!empty($this->validation_rules)) return;
+        if (!empty($this->validation_rules)) return;
 
         $this->validation_on_labels_only = $labels_only;
 
@@ -730,7 +730,7 @@ class Html
         return $this->input('radio', $name, $value)
             ->attributeIf($name, 'id', $value === null ? $this->dashed_field_name($name) : ($this->dashed_field_name($name) . '_' . $value))
             ->attributeIf(!is_null($value), 'value', $value)
-            ->attributeIf((!is_null($value) && $this->old($name) == $value) || $checked, 'checked');
+            ->attributeIf((!is_null($value) && $this->old($name, null) == $value) || $checked, 'checked');
         //@formatter:on
     }
 
@@ -914,6 +914,7 @@ class Html
         if (is_null($value) && $this->model && empty($this->request->old())) {
             $value = data_get($this->model, $processed_name) ?? '';
         }
+
 
         return $this->request->old($processed_name, $this->draft($name, $value));
     }

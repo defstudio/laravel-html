@@ -740,9 +740,13 @@ class Html
         $div = $this->div()->class('custom-control custom-radio');
 
         $radio = $this->radio($name, $checked, $value)->class('custom-control-input');
-        $label = $this->label($label)->for($radio->getAttribute('id'))->class('custom-control-label');
+        $label = $this->label($label)
+            ->for($radio->getAttribute('id'))
+            ->class('custom-control-label');
 
-        return $div->addChild($radio)->addChild($label);
+        $required_mark = $this->is_field_required($name)?'<label class="field-required"></span>':'';
+
+        return $div->addChild($radio)->addChild($label)->addChild($required_mark);
     }
 
 

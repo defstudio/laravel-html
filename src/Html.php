@@ -1,4 +1,9 @@
 <?php
+/*
+ * Copyright (C) 2021. Def Studio
+ *  Unauthorized copying of this file, via any medium is strictly prohibited
+ *  Authors: Fabio Ivona <fabio.ivona@defstudio.it> & Daniele Romeo <danieleromeo@defstudio.it>
+ */
 
 namespace DefStudio\Html;
 
@@ -26,10 +31,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Illuminate\Support\Facades\Session;
 use ReflectionClass;
 use ReflectionException;
 
@@ -211,7 +216,7 @@ class Html
      */
     public function help($text, $placement = 'bottom')
     {
-        return $this->icon("question")->popover($text, "Aiuto");;
+        return $this->icon("question")->popover($text, "Aiuto");
     }
 
     /**
@@ -362,7 +367,9 @@ class Html
         $checkbox = $this->checkbox($name, $checked, $value)->class('custom-control-input')->attributeIf($force_id, 'id', $force_id);
         $label = $this->label($label)->for($checkbox->getAttribute('id'))->class('custom-control-label');
 
-        return $div->addChild($checkbox)->addChild($label);
+        $required_mark = $this->is_field_required($name) ? '<label class="field-required"></span>' : '';
+
+        return $div->addChild($checkbox)->addChild($label)->addChild($required_mark);
     }
 
     public function custom_switch(string $name, string $label = '', $checked = null, $value = '1', $force_id = null)

@@ -1,4 +1,9 @@
 <?php
+/*
+ * Copyright (C) 2021. Def Studio
+ *  Unauthorized copying of this file, via any medium is strictly prohibited
+ *  Authors: Fabio Ivona <fabio.ivona@defstudio.it> & Daniele Romeo <danieleromeo@defstudio.it>
+ */
 
 namespace DefStudio\Html\Elements;
 
@@ -9,7 +14,7 @@ use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\MinMaxLength;
 use DefStudio\Html\Elements\Attributes\Name;
 use DefStudio\Html\Elements\Attributes\Placeholder;
-use DefStudio\Html\Elements\Attributes\Readonly;
+use DefStudio\Html\Elements\Attributes\IsReadonly;
 use DefStudio\Html\Elements\Attributes\Required;
 use DefStudio\Html\Exceptions\InvalidHtml;
 
@@ -19,7 +24,7 @@ class Textarea extends BaseElement{
     use Name;
     use Required;
     use Disabled;
-    use Readonly;
+    use IsReadonly;
     use MinMaxLength;
     use ChecksError;
 

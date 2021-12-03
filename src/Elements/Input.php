@@ -1,4 +1,9 @@
 <?php
+/*
+ * Copyright (C) 2021. Def Studio
+ *  Unauthorized copying of this file, via any medium is strictly prohibited
+ *  Authors: Fabio Ivona <fabio.ivona@defstudio.it> & Daniele Romeo <danieleromeo@defstudio.it>
+ */
 
 namespace DefStudio\Html\Elements;
 
@@ -9,7 +14,7 @@ use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\MinMaxLength;
 use DefStudio\Html\Elements\Attributes\Name;
 use DefStudio\Html\Elements\Attributes\Placeholder;
-use DefStudio\Html\Elements\Attributes\Readonly;
+use DefStudio\Html\Elements\Attributes\IsReadonly;
 use DefStudio\Html\Elements\Attributes\Required;
 use DefStudio\Html\Elements\Attributes\Type;
 use DefStudio\Html\Elements\Attributes\Value;
@@ -28,7 +33,7 @@ class Input extends BaseElement
     use MinMaxLength;
     use Name;
     use Placeholder;
-    use Readonly;
+    use IsReadonly;
     use Required;
     use Type;
     use Value;

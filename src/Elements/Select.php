@@ -1,4 +1,9 @@
 <?php
+/*
+ * Copyright (C) 2021. Def Studio
+ *  Unauthorized copying of this file, via any medium is strictly prohibited
+ *  Authors: Fabio Ivona <fabio.ivona@defstudio.it> & Daniele Romeo <danieleromeo@defstudio.it>
+ */
 
 namespace DefStudio\Html\Elements;
 
@@ -7,7 +12,7 @@ use DefStudio\Html\Elements\Attributes\Autofocus;
 use DefStudio\Html\Elements\Attributes\ChecksError;
 use DefStudio\Html\Elements\Attributes\Disabled;
 use DefStudio\Html\Elements\Attributes\Name;
-use DefStudio\Html\Elements\Attributes\Readonly;
+use DefStudio\Html\Elements\Attributes\IsReadonly;
 use DefStudio\Html\Elements\Attributes\Required;
 use DefStudio\Html\Selectable;
 use Illuminate\Support\Collection;
@@ -18,7 +23,7 @@ class Select extends BaseElement{
     use Disabled;
     use Name;
     use Required;
-    use Readonly;
+    use IsReadonly;
     use ChecksError;
 
     /** @var string */

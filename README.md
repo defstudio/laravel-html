@@ -1,4 +1,4 @@
-# Painless html generation forked by [Spatie](https://spatie.be/open-source)
+# Painless html generation forked from [Spatie](https://spatie.be/open-source)'s package
 
 
 ## Credits

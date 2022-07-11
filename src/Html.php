@@ -121,6 +121,9 @@ class Html
 
     private function apply_name_pattern($name)
     {
+        if(empty($name)){
+            return $name;
+        }
 
         if (Str::contains($name, '<..>')) {
             //apply_absolute_prefix

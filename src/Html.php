@@ -946,7 +946,7 @@ class Html
      */
     private function array_format_to_dot_notation($name)
     {
-        $name = preg_replace('/\[(.+)\]/U', '.$1', $name);
+        $name = preg_replace('/\[(.+)\]/U', '.$1', $name ?? '');
         $name = preg_replace('/\[\]/U', '', $name);
         return $name;
     }

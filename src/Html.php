@@ -747,7 +747,7 @@ class Html
 
     public function custom_radio(string $name, string $label = '', $checked = null, $value = null)
     {
-        $div = $this->div()->class('custom-control custom-radio');
+        $div = $this->div()->class('custom-control custom-radio hide-validation-message');
 
         $radio = $this->radio($name, $checked, $value)->class('custom-control-input');
         $label = $this->label($label)

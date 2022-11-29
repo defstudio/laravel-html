@@ -361,7 +361,7 @@ class Html
 
     public function custom_checkbox(string $name, string $label = '', $checked = null, $value = '1', $force_id = null, $inline = false)
     {
-        $div = $this->div()->class('custom-control custom-checkbox');
+        $div = $this->div()->class('custom-control custom-checkbox hide-validation-message');
 
         if ($inline) {
             $div = $div->class('custom-control-inline');
